@@ -115,7 +115,9 @@ void Sun(const char Send_Email[BUFSIZ], const char Send_Passworld[BUFSIZ], char 
 	Receive_Message(Email_Connect);
 	
 	//接下来就是登录邮箱
+
 	const char *Email_Account = Send_Email;
+
 	const char *Email_Password = Send_Passworld;
 	//然后发送您的账号和密码通过Base64重组编码发送给SMTP服务器
 
@@ -124,6 +126,7 @@ void Sun(const char Send_Email[BUFSIZ], const char Send_Passworld[BUFSIZ], char 
 	strcat(SendBuf, "\r\n\0");
 	Send_Message(Email_Connect, SendBuf);
 	Receive_Message(Email_Connect);
+
 
 	Base64_Encode(Email_Password, Base64);
 	strcpy(SendBuf, Base64);
@@ -139,26 +142,39 @@ void Sun(const char Send_Email[BUFSIZ], const char Send_Passworld[BUFSIZ], char 
 	strcat(SendBuf, "\r\n\0");
 	Send_Message(Email_Connect, SendBuf);
 	Receive_Message(Email_Connect);
+
+
 	//现在要告诉服务器收件人是谁
+
 	strcpy(SendBuf, "rcpt to:<");
 	strcat(SendBuf, Receive_Email);
 	strcat(SendBuf, ">");
 	strcat(SendBuf, "\r\n\0");
 	Send_Message(Email_Connect, SendBuf);
 	Receive_Message(Email_Connect);
+	
+
 	//发送邮件内容
 	Send_Message(Email_Connect, "data\r\n");
 	Receive_Message(Email_Connect);
+
 	strcpy(SendBuf, "From:");
+
 	strcat(SendBuf, Send_Email);
 	strcat(SendBuf, "\n");
+
 	strcat(SendBuf, "To:");
+
 	strcat(SendBuf, Receive_Email);
 	strcat(SendBuf, "\n");
+
+
 	//发送标题和内容给服务器
 	strcat(SendBuf, "subject:");
+
 	strcat(SendBuf, Title);
 	strcat(SendBuf, "\r\n\r\n");
+
 	strcat(SendBuf, Content);
 	strcat(SendBuf, "\r\n.\r\n\0");
 	Send_Message(Email_Connect, SendBuf);
@@ -167,4 +183,5 @@ void Sun(const char Send_Email[BUFSIZ], const char Send_Passworld[BUFSIZ], char 
 	Uninstalls(Email_Connect);
 	printf("mail is already send to:%s\n", Receive_Email);
 	system("pause");
+
 }
