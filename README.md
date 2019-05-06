@@ -1,6 +1,8 @@
-EmailSMTP 库演示
+EmailSMTP_API 库演示
 ========
-**欢迎随时访问我的博客** **[叮叮猫🐱]**
+**欢迎随时访问我的博客** **[叮叮猫🐱‍👤]**
+
+**演示的库SMTP地址指向的是QQ邮箱即 "smtp.qq.com" 端口：25 如果你想指向其他的邮箱那么就得编译源代码修改SMTP地址和端口号及访问SMTP服务器的命令。更加详细的解决方案请转移到互联网上 哪里相比这里讲解的更加丰富**
 
 为了方便使用 **SMTP** 协议发送邮件开发的一个简单的邮件传输库，库的使用方法及其简单。
 
@@ -11,11 +13,11 @@ EmailSMTP 库演示
 
 开发背景
 --
-库是建立在C/C++语言上开发的
+库是建立在 **C/C++** 语言上开发的
 
 调用函数及使用发放
 --
-* DLL文件名：EmailSMTP.dll
+* DLL文件名：EmailSMTP_API.dll
 
 * 函数名：Sun() 下面是原型
 
@@ -47,7 +49,7 @@ int main()
 	const char password[BUFSIZ]="0";
 	char rece_email[BUFSIZ],titles[BUFSIZ],content[BUFSIZ];
 	HMODULE hmodule = NULL;
-	hmodule = LoadLibrary(__TEXT("EmailSMTP.dll")); //加载Dll返回给句柄
+	hmodule = LoadLibrary(__TEXT("EmailSMTP_API.dll")); //加载Dll返回给句柄
 	if (hmodule == 0)
 	{
 		printf("Open Library File Error!\n");
@@ -64,7 +66,7 @@ int main()
 	}
 	else
 		printf("Function Loading Success!\n");
-  //填写主要信息，它们都是必要的。
+    //填写主要信息，它们都是必要的。
 	printf("Send Email:");
 	scanf("%s", &email);
 	printf("Send Password:");
@@ -81,6 +83,6 @@ int main()
 	return 0;
 }
 ```
-**欢迎随时访问我的博客** **[叮叮猫🐱]** **获得跟多**
+**欢迎随时访问我的博客** **[叮叮猫🐱‍👤]** **获得跟多**
 
-[叮叮猫🐱]: http://www.DdCat.com
+[叮叮猫🐱‍👤]: http://www.DdCat.com
